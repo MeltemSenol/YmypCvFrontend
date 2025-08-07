@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import {SocialAccountContext} from '../contexts/SocialAccountContext'
+
 
 const SocialAccount = () => {
+  const{socialAccounts}=useContext(SocialAccountContext);
   return (
     <div className="social-icons">
-          <a className="social-icon" href="#!"><i className="fab fa-linkedin-in" /></a>
-          <a className="social-icon" href="#!"><i className="fab fa-github" /></a>
-          <a className="social-icon" href="#!"><i className="fab fa-twitter" /></a>
-          <a className="social-icon" href="#!"><i className="fab fa-facebook-f" /></a>
+      {
+          socialAccounts.map(account => <a className="social-icon" href={`${account?.webUrl}/${account?.userName}`} key={account?.id} target='_blank'><i className={account?.icon} /></a>)
+      }
         </div>
   )
 }

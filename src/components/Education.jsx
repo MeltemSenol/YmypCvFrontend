@@ -1,27 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { EducationContext } from '../contexts/EducationContext'
 
 const Education = () => {
+  const {educations}=useContext(EducationContext);
   return (
     <section className="resume-section" id="education">
       <div className="resume-section-content">
-        <h2 className="mb-5">Education</h2>
-        <div className="d-flex flex-column flex-md-row justify-content-between mb-5">
+        <h2 className="mb-5">Eğitimler</h2>
+        {educations.map(education=><div className="d-flex flex-column flex-md-row justify-content-between mb-5" key={education?.id}>
           <div className="flex-grow-1">
-            <h3 className="mb-0">University of Colorado Boulder</h3>
-            <div className="subheading mb-3">Bachelor of Science</div>
-            <div>Computer Science - Web Development Track</div>
-            <p>GPA: 3.23</p>
+            <h3 className="mb-0">{education?.school}</h3>
+            <div className="subheading mb-3">{education?.section}</div>
+            <div>{education?.department}-{education?.grade}</div>
+            <p>GPA: {education?.gpa}</p>
           </div>
-          <div className="flex-shrink-0"><span className="text-primary">August 2006 - May 2010</span></div>
-        </div>
-        <div className="d-flex flex-column flex-md-row justify-content-between">
-          <div className="flex-grow-1">
-            <h3 className="mb-0">James Buchanan High School</h3>
-            <div className="subheading mb-3">Technology Magnet Program</div>
-            <p>GPA: 3.56</p>
-          </div>
-          <div className="flex-shrink-0"><span className="text-primary">August 2002 - May 2006</span></div>
-        </div>
+          <div className="flex-shrink-0"><span className="text-primary">{new Date(education?.startDate).toLocaleDateString()}-{education?.endDate ? new Date(education.endDate).toLocaleDateString():"Devam ediyor"}</span></div>
+        </div>)}
+        
+       
       </div>
     </section>
   )

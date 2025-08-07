@@ -1,25 +1,18 @@
-import React from 'react'
-
-const ProgramLanguageAndTool = () => {
+import React, { useContext } from 'react'
+import { SkillContext } from '../contexts/SkillContext'
+ 
+const ProgramLanguageAndTools = () => {
+  const {programAndTools} = useContext(SkillContext)
   return (
     <>
-     <div className="subheading mb-3">Programming Languages &amp; Tools</div>
+    <div className="subheading mb-3">Programlama Dilleri ve Araçlar &amp; Tools</div>
         <ul className="list-inline dev-icons">
-          <li className="list-inline-item"><i className="fab fa-html5" /></li>
-          <li className="list-inline-item"><i className="fab fa-css3-alt" /></li>
-          <li className="list-inline-item"><i className="fab fa-js-square" /></li>
-          <li className="list-inline-item"><i className="fab fa-angular" /></li>
-          <li className="list-inline-item"><i className="fab fa-react" /></li>
-          <li className="list-inline-item"><i className="fab fa-node-js" /></li>
-          <li className="list-inline-item"><i className="fab fa-sass" /></li>
-          <li className="list-inline-item"><i className="fab fa-less" /></li>
-          <li className="list-inline-item"><i className="fab fa-wordpress" /></li>
-          <li className="list-inline-item"><i className="fab fa-gulp" /></li>
-          <li className="list-inline-item"><i className="fab fa-grunt" /></li>
-          <li className="list-inline-item"><i className="fab fa-npm" /></li>
+          {
+            programAndTools.map(item => <li className="list-inline-item" key={item?.id}><i className={item?.icon} /></li>)
+          }
         </ul>
     </>
   )
 }
-
-export default ProgramLanguageAndTool
+ 
+export default ProgramLanguageAndTools
