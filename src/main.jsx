@@ -9,6 +9,7 @@ import { SocialAccountContextProvider } from './contexts/SocialAccountContext.js
 import { ExperienceContextProvider } from './contexts/ExperienceContext.jsx'
 import { EducationContextProvider } from './contexts/EducationContext.jsx'
 import { SkillContextProvider } from './contexts/SkillContext.jsx'
+import { InterestContextProvider } from './contexts/InterestContext.jsx'
 
 
 createRoot(document.getElementById('root')).render(
@@ -20,7 +21,10 @@ createRoot(document.getElementById('root')).render(
             <ExperienceContextProvider>
               <EducationContextProvider>
                 <SkillContextProvider>
+                  <InterestContextProvider>
 <App /> 
+                  </InterestContextProvider>
+
                 </SkillContextProvider>
 
               </EducationContextProvider>
